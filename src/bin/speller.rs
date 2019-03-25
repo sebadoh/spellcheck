@@ -19,5 +19,10 @@ fn main() {
     let contents = fs::read_to_string(&args[1])
         .expect("Something went wrong reading the file");
     speller.train(&contents);
-    println!("{} -> {}", &args[2], speller.correct(&args[2]));
+   if args[2] == speller.correct(&args[2]){
+       println!("'{}' is correct!", (&args[2]));
+   }
+   else {
+       println!("You typed: {}, Did you mean: {}?", &args[2], speller.correct(&args[2]));
+   }
 }
